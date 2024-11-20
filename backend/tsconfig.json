@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "target": "ES2018" /* Define a versão da linguagem JavaScript para o JavaScript emitido e inclui declarações de biblioteca compatíveis. */,
+    "lib": ["ES2018"],
+    "module": "commonjs" /* Especifica qual código de módulo será gerado. */,
+    "moduleResolution": "node" /* Especifica como o TypeScript busca um arquivo a partir de um especificador de módulo. */,
+    "typeRoots": ["./src/@types"],
+    "resolveJsonModule": true /* Habilita a importação de arquivos .json. */,
+    "allowJs": true /* Permite que arquivos JavaScript façam parte do seu programa. Use a opção 'checkJS' para obter erros desses arquivos. */,
+    "outDir": "./dist" /* Especifica uma pasta de saída para todos os arquivos emitidos. */,
+    "esModuleInterop": true /* Emite JavaScript adicional para facilitar o suporte à importação de módulos CommonJS. Isso habilita 'allowSyntheticDefaultImports' para compatibilidade de tipos. */,
+    "forceConsistentCasingInFileNames": true /* Garante que a diferenciação de maiúsculas e minúsculas seja correta nas importações. */,
+    "strict": true /* Habilita todas as opções de verificação de tipo estritas. */,
+    "noImplicitAny": true /* Habilita a exibição de erros para expressões e declarações com um tipo implícito 'any'. */,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
+}

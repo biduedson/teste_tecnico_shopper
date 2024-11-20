@@ -1,0 +1,21 @@
+# Node modules
+node_modules/
+
+# Logs
+*.log
+
+# Arquivos de ambiente
+.env
+
+# Tipos do TypeScript
+*.tsbuildinfo
+
+# Diretórios de build ou dist
+dist/
+
+# Docker
+.docker/
+
+# Outros arquivos temporários
+.vscode/
+.idea/
