@@ -14,8 +14,8 @@ const estimateRideRouteController = new EstimateRideRouteController(
 );
 
 estimateRideRoute.post("/estimate", async (req: Request, res: Response) => {
-  const { body, statusCode } =
+  const { StatusCode, Descricao, Resposta } =
     await estimateRideRouteController.postRideEstimate(req.body!);
 
-  res.status(statusCode).json(body);
+  res.status(StatusCode).json({ StatusCode, Descricao, Resposta });
 });
