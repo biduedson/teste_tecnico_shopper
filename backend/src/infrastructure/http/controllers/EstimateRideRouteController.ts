@@ -19,7 +19,6 @@ export class EstimateRideRouteController {
         body: routeResponse.body,
       };
     } catch (error) {
-      console.log(error);
       const { body, statusCode } = capTuretypeError(error as Error);
       return {
         statusCode: statusCode,
