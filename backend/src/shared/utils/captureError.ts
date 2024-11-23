@@ -1,10 +1,9 @@
-import { HttpResponse } from "../../application/interfaces/HttpResponse";
-import { IHttpResponseSucces } from "../../application/interfaces/httpResponseSucess";
+import { IHttpResponse } from "../../application/interfaces/HttpResponse";
 import { DriverNotFoundError } from "../../domain/exeptions/driverNotFoundError";
 import { InvalidDataError } from "../../domain/exeptions/InvalidDataError";
 import { InvalidMileageError } from "../../domain/exeptions/invalidMileageError";
 
-export const capTuretypeError = (error: Error): IHttpResponseSucces<any> => {
+export const capTuretypeError = (error: Error): IHttpResponse<any> => {
   if (
     error instanceof InvalidDataError ||
     error instanceof DriverNotFoundError ||

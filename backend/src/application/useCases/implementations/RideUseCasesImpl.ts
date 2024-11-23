@@ -1,6 +1,5 @@
 import { validate } from "class-validator";
 import { IRideRepository } from "../../../infrastructure/database/repositories/contracts/RideRepository";
-import { IHttpResponseSucces } from "../../interfaces/httpResponseSucess";
 import { IRide } from "../../interfaces/Ride";
 import { IRideUseCases } from "../contracts/RideUseCases";
 import { DriverDTO, RideDTO } from "../../dtos/RideConfirmDTO";

@@ -3,11 +3,9 @@ import { InvalidDataError } from "../../../domain/exeptions/InvalidDataError";
 import { rideEstimateService } from "../../../domain/services/RideEstimateService";
 import { ICalculateRideUseRepository } from "../../../infrastructure/database/repositories/contracts/CalculateRideRepository";
 import { UserDTO } from "../../dtos/UserDto";
-import { HttpResponse } from "../../interfaces/HttpResponse";
 import { IRouteResponse } from "../../interfaces/RideEstimateResponse";
 import { User } from "../../interfaces/User";
 import { ICalculateRideUseCases } from "../contracts/CalculateRideUseCases";
-import { IHttpResponseSucces } from "../../interfaces/httpResponseSucess";
 
 export class CalculateRideUseCaseImpl implements ICalculateRideUseCases {
   constructor(private readonly _repository: ICalculateRideUseRepository) {}

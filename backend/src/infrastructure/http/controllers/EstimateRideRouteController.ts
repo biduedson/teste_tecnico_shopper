@@ -1,5 +1,4 @@
-import { HttpResponse } from "../../../application/interfaces/HttpResponse";
-import { IHttpResponseSucces } from "../../../application/interfaces/httpResponseSucess";
+import { IHttpResponse } from "../../../application/interfaces/HttpResponse";
 import { IRouteResponse } from "../../../application/interfaces/RideEstimateResponse";
 import { User } from "../../../application/interfaces/User";
 import { ICalculateRideUseCases } from "../../../application/useCases/contracts/CalculateRideUseCases";
@@ -9,9 +8,7 @@ export class EstimateRideRouteController {
   constructor(
     private readonly _calculateRideUseCases: ICalculateRideUseCases
   ) {}
-  async postRideEstimate(
-    user: User
-  ): Promise<IHttpResponseSucces<IRouteResponse>> {
+  async postRideEstimate(user: User): Promise<IHttpResponse<IRouteResponse>> {
     try {
       const routeResponse = await this._calculateRideUseCases.postRideEstimate(
         user

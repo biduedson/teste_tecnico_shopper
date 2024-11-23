@@ -8,12 +8,14 @@ import axios from "axios";
 import { estimateRideRoute } from "./infrastructure/http/routes/estimateRide";
 import sequelize from "./infrastructure/database/sequelize";
 import { ridecofirmRoutes } from "./infrastructure/http/routes/rideConfirm";
+import { getRideUserList } from "./infrastructure/http/routes/getRideUserList";
 
 const app = express();
 app.use(express.json());
 
 app.use("/ride", estimateRideRoute);
 app.use("/ride", ridecofirmRoutes);
+app.use("/ride", getRideUserList);
 
 const PORT = 8080;
 export const GOOGLE_API_KEY = process.env.GOOGLE_API_KEY;

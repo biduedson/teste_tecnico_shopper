@@ -1,4 +1,5 @@
-export interface HttpResponse<T> {
-  statusCode: number;
-  body: T | string;
+export interface IHttpResponse<T> {
+  StatusCode: number;
+  Descricao: string;
+  Resposta: T;
 }
