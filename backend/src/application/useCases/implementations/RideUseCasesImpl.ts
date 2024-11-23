@@ -6,7 +6,6 @@ import { DriverDTO, RideDTO } from "../../dtos/RideConfirmDTO";
 import { InvalidDataError } from "../../../domain/exeptions/InvalidDataError";
 import { validateRideService } from "../../../domain/services/validation/validateRideService";
 import { validateDriverRideService } from "../../../domain/services/validation/validateDriverRideService";
-import { DriverNotFoundError } from "../../../domain/exeptions/driverNotFoundError";
 import { InvalidMileageError } from "../../../domain/exeptions/invalidMileageError";
 import { NotFoundError } from "../../../domain/exeptions/notFoundError";
 
@@ -40,7 +39,7 @@ export class RideUseCasesImpl implements IRideUseCases {
       throw new InvalidMileageError(
         "Quilometragem inválida para o motorista",
         "INVALID_DISTANCE",
-        "A quilometragem informada é menor que a quilometragem mínima doo motorista"
+        "A quilometragem informada é menor que a quilometragem mínima do motorista"
       );
     }
 
