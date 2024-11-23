@@ -1,6 +1,7 @@
 import { InvalidDataError } from "../../../domain/exeptions/InvalidDataError";
 import { NotFoundError } from "../../../domain/exeptions/notFoundError";
 import { IRideUserListRepository } from "../../../infrastructure/database/repositories/contracts/RideUserListRepository";
+import { sortByCreationDate } from "../../../shared/utils/sortByCreationDate";
 import { IRide } from "../../interfaces/Ride";
 import { IRideUserListUseCases } from "../contracts/RideUserListUseCases";
 
@@ -46,8 +47,8 @@ export class RideUserListUseCasesImpl implements IRideUserListUseCases {
           "Nenhum registro encontrado  verifique  o id do motorista."
         );
       }
-      return riderListDriver;
+      return sortByCreationDate(riderListDriver);
     }
-    return rideUserList;
+    return sortByCreationDate(rideUserList);
   }
 }
