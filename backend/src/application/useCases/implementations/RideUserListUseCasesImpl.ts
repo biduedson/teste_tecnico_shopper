@@ -41,9 +41,9 @@ export class RideUserListUseCasesImpl implements IRideUserListUseCases {
           driverId
         );
       if (riderListDriver.length === 0) {
-        throw new NotFoundError(
-          "Nenhum registro encontrado",
-          "NO_RIDES_FOUND",
+        throw new InvalidDataError(
+          "Os dados fornecidos no corpo da requisição são inválidos",
+          "INVALID_DRIVER",
           "Nenhum registro encontrado  verifique  o id do motorista."
         );
       }
