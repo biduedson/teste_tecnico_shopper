@@ -1,7 +1,8 @@
 import { IRide } from "../../../../application/interfaces/Ride";
 import { IRideUserListRepository } from "../contracts/RideUserListRepository";
 
-import { RideConfirmModel } from "../../models/rideConfirmModel";
+import { RideConfirmModel } from "../../models/RideConfirmModel";
+import { sortByCreationDate } from "../../../../shared/utils/sortByCreationDate";
 
 export class RideUserlisRepositoryImpl implements IRideUserListRepository {
   async getRiderUserList(
@@ -11,7 +12,8 @@ export class RideUserlisRepositoryImpl implements IRideUserListRepository {
     const riders = await RideConfirmModel.findAll({
       where: { customer_id: customer_id },
     });
-    return riders;
+
+    return sortByCreationDate(riders);
   }
 
   async getRiderUserWhitDriverList(
@@ -26,6 +28,6 @@ export class RideUserlisRepositoryImpl implements IRideUserListRepository {
         },
       },
     });
-    return riders;
+    return sortByCreationDate(riders);
   }
 }

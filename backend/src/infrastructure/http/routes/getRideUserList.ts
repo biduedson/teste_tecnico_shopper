@@ -14,12 +14,11 @@ const rideUserListController = new RideUserListController(rideUserListUseCases);
 
 getRideUserList.get("/:customer_id", async (req: Request, res: Response) => {
   console.log("ola");
-  const { customer_id } = req.params; // Parâmetro de rota
-  const { driverId } = req.query; // Query parameter
+
   const { StatusCode, Descricao, Resposta } =
     await rideUserListController.getRideUserList({
-      params: String(customer_id),
-      query: Number(driverId),
+      params: req.params,
+      query: req.query,
     });
-  res.json({ StatusCode, Descricao, Resposta });
+  res.status(StatusCode).json({ StatusCode, Descricao, Resposta });
 });

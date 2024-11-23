@@ -1,10 +1,7 @@
 import dotenv from "dotenv";
 dotenv.config({ path: "../.env" }); // Caminho para o arquivo .env na raiz do projeto
 
-import { Request, Response } from "express";
-
 import express from "express";
-import axios from "axios";
 import { estimateRideRoute } from "./infrastructure/http/routes/estimateRide";
 import sequelize from "./infrastructure/database/sequelize";
 import { ridecofirmRoutes } from "./infrastructure/http/routes/rideConfirm";

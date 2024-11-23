@@ -8,6 +8,7 @@ import { validateRideService } from "../../../domain/services/validation/validat
 import { validateDriverRideService } from "../../../domain/services/validation/validateDriverRideService";
 import { DriverNotFoundError } from "../../../domain/exeptions/driverNotFoundError";
 import { InvalidMileageError } from "../../../domain/exeptions/invalidMileageError";
+import { NotFoundError } from "../../../domain/exeptions/notFoundError";
 
 export class RideUseCasesImpl implements IRideUseCases {
   constructor(private readonly _rideRepository: IRideRepository) {}
@@ -28,7 +29,7 @@ export class RideUseCasesImpl implements IRideUseCases {
 
     const driverFound = await this._rideRepository.getDriver(ride.driver.id);
     if (!driverFound) {
-      throw new DriverNotFoundError(
+      throw new NotFoundError(
         "Motorista não encontrado",
         "DRIVER_NOT_FOUND",
         "Motorista não esta cadastrado."
