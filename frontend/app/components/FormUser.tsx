@@ -64,8 +64,8 @@ const FormUser = () => {
 
   return (
     <>
-      <div className="max-w-xl h-auto mx-auto mt-10 p-10  bg-gray-800 shadow-md shadow-slate-400 rounded-lg">
-        <h1 className="text-2xl font-bold mb-4 text-slate-950">
+      <div className="max-w-xl h-auto mx-auto mt-10 p-10  bg-gray-800/80 shadow-md shadow-slate-600 rounded-sm">
+        <h1 className="text-2xl font-bold mb-4 text-purple-600">
           Escolha seu Próximo Destino
         </h1>
         <Formik
@@ -74,7 +74,7 @@ const FormUser = () => {
           onSubmit={handleSubmit}
         >
           {({ isSubmitting }) => (
-            <Form className="space-y-4 ">
+            <Form className="space-y-1 ">
               <div>
                 <label
                   htmlFor="customer_id"
@@ -90,7 +90,7 @@ const FormUser = () => {
                 <ErrorMessage
                   name="customer_id"
                   component="div"
-                  className="text-red-500 text-sm "
+                  className="text-purple-600 text-sm "
                 />
               </div>
 
@@ -109,7 +109,7 @@ const FormUser = () => {
                 <ErrorMessage
                   name="origin"
                   component="div"
-                  className="text-red-500 text-sm"
+                  className="text-purple-600 text-sm"
                 />
               </div>
 
@@ -128,7 +128,7 @@ const FormUser = () => {
                 <ErrorMessage
                   name="destination"
                   component="div"
-                  className="text-red-500 text-sm"
+                  className="text-purple-600 text-sm"
                 />
               </div>
 

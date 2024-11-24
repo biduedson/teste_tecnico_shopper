@@ -28,23 +28,17 @@ const TravelOptions = ({
   dataDriver,
   pathPoints,
 }: TravelOptionsProps) => {
-  //const pathPoints = [
-  // { lat: -23.5515002, lng: -46.6508683 },
-  // { lat: -23.2683785, lng: -46.7432632 },
-  //];
-  if (pathPoints.length) {
-  }
   const pathArray = pathPoints.map((point) => [point.lat, point.lng]);
 
   const encodedPath = encode(pathArray);
-  const imgUrl = `https://maps.googleapis.com/maps/api/staticmap?center=-23.553195,-46.6548316&zoom=9&size=600x300&path=color:0x0000ff|weight:5|fillcolor:0x00ff00|enc:${encodedPath}&key=${process.env.GOOGLE_MAPS_API_KEY}`;
+  const imgUrl = `https://maps.googleapis.com/maps/api/staticmap?center=-23.553195,-46.6548316&zoom=7&size=600x300&path=color:0x0000ff|weight:5|fillcolor:0x00ff00|enc:${encodedPath}&key=${process.env.GOOGLE_MAPS_API_KEY}`;
 
   return (
     <>
       <AlertDialog open={isOpen}>
-        <AlertDialogContent className="rounded-xl bg-gray-800">
+        <AlertDialogContent className="rounded-xl bg-gray-800 h-[80vh] lg:h-[90%] px-4">
           <AlertDialogHeader>
-            <AlertDialogTitle className="w-full h-[250px] lg:h-[200px] shadow-lg   shadow-slate-500 rounded-lg ">
+            <AlertDialogTitle className="w-full h-[250px] lg:h-[180px] shadow-lg   shadow-slate-500 rounded-lg ">
               {pathPoints.length && (
                 <div className="relative w-full  h-full ">
                   <Image
@@ -57,7 +51,7 @@ const TravelOptions = ({
               )}
             </AlertDialogTitle>
             <AlertDialogDescription>
-              <div className="p-2 flex flex-col h-[180px] gap-4 overflow-y-scroll [&::-webkit-scrollbar]:hidden">
+              <div className=" flex flex-col h-[380px] lg:h-[280px] my-4 gap-4 overflow-y-scroll [&::-webkit-scrollbar]:hidden">
                 {dataDriver.map((driver) => {
                   return <CardDriver key={driver.id} driver={driver} />;
                 })}
@@ -66,10 +60,10 @@ const TravelOptions = ({
           </AlertDialogHeader>
           <AlertDialogFooter>
             <Button
-              className="border-purple-600 w-full"
+              className="bg-purple-600 hover:bg-purple-950 w-full"
               onClick={() => setIsOpen(false)}
             >
-              Close
+              Cancelar
             </Button>
           </AlertDialogFooter>
         </AlertDialogContent>
