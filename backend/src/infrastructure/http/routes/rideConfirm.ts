@@ -3,11 +3,13 @@ import { RideUseCasesImpl } from "../../../application/useCases/implementations/
 import { RideConfirmController } from "../controllers/RideConfirmController";
 import { Request, Response } from "express";
 import { RideRepositoryImpl } from "../../database/repositories/implementations/rideRepositoryImpl";
+import { ValidateRideServiceImpl } from "../../../domain/services/validation/ValidateRideServiceImpl";
 
 export const ridecofirmRoutes = Router();
 
 const rideRepository = new RideRepositoryImpl();
-const rideUseCases = new RideUseCasesImpl(rideRepository);
+const validateRideService = new ValidateRideServiceImpl();
+const rideUseCases = new RideUseCasesImpl(rideRepository, validateRideService);
 const rideConfirmController = new RideConfirmController(rideUseCases);
 
 ridecofirmRoutes.patch("/confirm", async (req: Request, res: Response) => {

@@ -2,7 +2,7 @@ import { IsNegative, IsNotEmpty, IsString } from "class-validator";
 
 export class UserDTO {
   @IsString({ message: "customer_id deve ser uma string." })
-  @IsNotEmpty({ message: "custumer_id  é obrigatório" })
+  @IsNotEmpty({ message: "id do usuario é obrigatório" })
   customer_id: string;
 
   @IsString({ message: "origin deve ser uma string." })

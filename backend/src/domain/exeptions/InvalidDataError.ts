@@ -8,6 +8,6 @@ export class InvalidDataError extends Error {
     this.statusCode = 400;
     this.error_code = error_code;
     this.error_description = error_description;
-    this.name = "BadRequestError";
+    this.name = "InvalidDataError";
   }
 }

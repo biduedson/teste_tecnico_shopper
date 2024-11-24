@@ -21,7 +21,6 @@ export class DriverDTO {
   }
 }
 
-// DTO principal
 export class RideDTO {
   @IsString({ message: "id do usuario deve ser uma string." })
   @IsNotEmpty({ message: "id do usuario é obrigatório" })
