@@ -25,7 +25,7 @@ export const rideEstimateService = (
           review: driver.review,
           value:
             driver.ratePerKm! *
-            goggleRouteResponse.routes[0].legs[0].distance.value.toFixed(2),
+            (goggleRouteResponse.routes[0].legs[0].distance.value / 1000),
         };
       })
       .sort((a, b) => a.value - b.value),
