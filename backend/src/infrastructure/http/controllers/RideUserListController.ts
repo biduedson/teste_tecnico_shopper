@@ -2,7 +2,6 @@ import { HttpRequest } from "../../../application/interfaces/HttpRequest";
 import { IHttpResponse } from "../../../application/interfaces/HttpResponse";
 import { IRide } from "../../../application/interfaces/Ride";
 import { IRideUserListUseCases } from "../../../application/useCases/contracts/RideUserListUseCases";
-import { InvalidDataError } from "../../../domain/exeptions/InvalidDataError";
 import { capTuretypeError } from "../../../shared/utils/captureError";
 
 export class RideUserListController {

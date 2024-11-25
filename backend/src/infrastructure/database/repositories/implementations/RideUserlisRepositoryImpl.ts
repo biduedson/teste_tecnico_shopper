@@ -1,7 +1,7 @@
 import { IRide } from "../../../../application/interfaces/Ride";
 import { IRideUserListRepository } from "../contracts/RideUserListRepository";
 
-import { RideConfirmModel } from "../../models/RideConfirmModel";
+import { RideConfirmModel } from "../../models/rideConfirmModel";
 
 export class RideUserlisRepositoryImpl implements IRideUserListRepository {
   async getRiderUserList(

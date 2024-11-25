@@ -49,6 +49,7 @@ export class RideUserListUseCasesImpl implements IRideUserListUseCases {
       }
       return sortByCreationDate(riderListDriver);
     }
+
     return sortByCreationDate(rideUserList);
   }
 }

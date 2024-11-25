@@ -1,6 +1,6 @@
 import { Sequelize } from "sequelize-typescript";
-import { RideConfirmModel } from "./models/RideConfirmModel";
-import { DriverRideModel } from "./models/DriverRideModel";
+import { RideConfirmModel } from "./models/rideConfirmModel";
+import { DriverRideModel } from "./models/driverRideModel";
 import path from "path";
 
 const sequelize = new Sequelize({

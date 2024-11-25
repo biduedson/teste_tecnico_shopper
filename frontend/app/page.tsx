@@ -1,5 +1,4 @@
-import Image from "next/image";
-import FormUser from "./components/FormUser";
+import FormUser from "./_components/FormUser";
 
 export default function Home() {
   return (

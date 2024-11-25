@@ -26,6 +26,14 @@ export class CalculateRideUseCaseImpl implements ICalculateRideUseCases {
     await this.addresValidationService.validateUserDto(userDto);
 
     const goggleRouteResponse = await this._repository.postRideEstimate(user);
+
+    if (goggleRouteResponse.status === "NOT_FOUND") {
+      throw new InvalidDataError(
+        "Os dados fornecidos no corpo da requisição são inválidos",
+        "INVALID_DATA",
+        "Endereço não encontrado"
+      );
+    }
     const rideEstimateResponse = rideEstimateService(goggleRouteResponse);
 
     return rideEstimateResponse;

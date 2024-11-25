@@ -1,7 +1,7 @@
 import { Driver } from "../../../../application/interfaces/Driver";
 import { IRide } from "../../../../application/interfaces/Ride";
 import { drivers } from "../../mockDrivers";
-import { RideConfirmModel } from "../../models/RideConfirmModel";
+import { RideConfirmModel } from "../../models/rideConfirmModel";
 
 import { IRideRepository } from "../contracts/RideRepository";
 

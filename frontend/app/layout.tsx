@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Oswald, Roboto } from "next/font/google";
 import "./globals.css";
-import NavBar from "./components/NavBar";
+import NavBar from "./_components/NavBar";
 //components
 
 const oswald = Oswald({
