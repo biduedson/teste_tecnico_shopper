@@ -1,7 +1,7 @@
 import { validate } from "class-validator";
-import { UserDTO } from "../../../application/dtos/UserDto";
 import { InvalidDataError } from "../../exeptions/InvalidDataError";
 import { IAddressValidationService } from "./abstract/AddressValidationService";
+import { ITravelRequestBody } from "../../../application/interfaces/TravelRequestBody";
 
 export class AddressValidationService implements IAddressValidationService {
   normalizaAdrres(address: string) {
@@ -20,8 +20,8 @@ export class AddressValidationService implements IAddressValidationService {
     }
   }
 
-  async validateUserDto(userDto: UserDTO): Promise<void> {
-    const errors = await validate(userDto);
+  async validateUserDto(body: ITravelRequestBody): Promise<void> {
+    const errors = await validate(body);
     if (errors.length > 0) {
       errors.map((error) => {
         const FirstError = errors[0];

@@ -3,9 +3,9 @@ import { NotFoundError } from "../../../domain/exeptions/notFoundError";
 import { IRideUserListRepository } from "../../../infrastructure/database/repositories/contracts/RideUserListRepository";
 import { sortByCreationDate } from "../../../shared/utils/sortByCreationDate";
 import { IRide } from "../../interfaces/Ride";
-import { IRideUserListUseCases } from "../contracts/RideUserListUseCases";
+import { IUserTravelListUseCases } from "../contracts/UserTravelListUseCases";
 
-export class RideUserListUseCasesImpl implements IRideUserListUseCases {
+export class UserTravelListUseCasesImpl implements IUserTravelListUseCases {
   constructor(
     public readonly _rideUserListRepository: IRideUserListRepository
   ) {}

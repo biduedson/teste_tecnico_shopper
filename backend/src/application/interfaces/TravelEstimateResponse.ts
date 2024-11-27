@@ -1,8 +1,9 @@
-import { Driver } from "./Driver";
-import { Location } from "./Location";
-import { Review } from "./Review";
+export interface Location {
+  latitude: number;
+  longitude: number;
+}
 
-export interface IRouteResponse {
+export interface ITravelEstimateResponse {
   origin: Location;
   destination: Location;
   distance: number;
@@ -12,7 +13,11 @@ export interface IRouteResponse {
     name: string;
     description: string;
     vehicle: string;
-    review: Review;
+    reviews: {
+      rating: number;
+      comment: string;
+    }[];
+
     value: number;
   }[];
   routeResponse: object;

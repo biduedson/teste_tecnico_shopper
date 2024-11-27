@@ -1,10 +1,11 @@
-import { IRouteResponse } from "../../application/interfaces/RideEstimateResponse";
-import { drivers } from "../../infrastructure/database/mockDrivers";
+import { IDriver } from "../../application/interfaces/Driver";
+import { ITravelEstimateResponse } from "../../application/interfaces/TravelEstimateResponse";
 
 export const rideEstimateService = (
-  goggleRouteResponse: any
-): IRouteResponse => {
-  const data: IRouteResponse = {
+  goggleRouteResponse: any,
+  drivers: IDriver[]
+): ITravelEstimateResponse => {
+  const data: ITravelEstimateResponse = {
     origin: {
       latitude: goggleRouteResponse.routes[0].legs[0].start_location.lat,
       longitude: goggleRouteResponse.routes[0].legs[0].start_location.lng,
@@ -18,11 +19,8 @@ export const rideEstimateService = (
     options: drivers
       .map((driver) => {
         return {
-          id: driver.id,
-          name: driver.name,
-          description: driver.description,
-          vehicle: driver.vehicle,
-          review: driver.review,
+          ...driver,
+          ...driver.reviews,
           value:
             driver.ratePerKm! *
             (goggleRouteResponse.routes[0].legs[0].distance.value / 1000),
@@ -31,5 +29,6 @@ export const rideEstimateService = (
       .sort((a, b) => a.value - b.value),
     routeResponse: goggleRouteResponse,
   };
+
   return data;
 };

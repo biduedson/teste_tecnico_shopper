@@ -1,11 +1,13 @@
 import { HttpRequest } from "../../../application/interfaces/HttpRequest";
 import { IHttpResponse } from "../../../application/interfaces/HttpResponse";
 import { IRide } from "../../../application/interfaces/Ride";
-import { IRideUserListUseCases } from "../../../application/useCases/contracts/RideUserListUseCases";
+import { IUserTravelListUseCases } from "../../../application/useCases/contracts/UserTravelListUseCases";
 import { capTuretypeError } from "../../../shared/utils/captureError";
 
-export class RideUserListController {
-  constructor(private readonly _rideUserListUseCases: IRideUserListUseCases) {}
+export class UserTravelListController {
+  constructor(
+    private readonly _rideUserListUseCases: IUserTravelListUseCases
+  ) {}
   async getRideUserList(
     httpRequest: HttpRequest<{ params: string; query: any }>
   ): Promise<IHttpResponse<IRide[]>> {

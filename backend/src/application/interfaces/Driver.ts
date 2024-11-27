@@ -1,12 +1,12 @@
-export interface Driver {
+export interface IDriver {
   id: number;
   name: string;
   description: string;
   vehicle: string;
-  review: {
+  reviews: {
     rating: number;
     comment: string;
-  };
-  ratePerKm?: number;
+  }[];
+  ratePerKm: number;
   minKm?: number;
 }

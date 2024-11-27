@@ -3,7 +3,7 @@ import { IRide } from "../../../application/interfaces/Ride";
 import { IRideUseCases } from "../../../application/useCases/contracts/RideUseCases";
 import { capTuretypeError } from "../../../shared/utils/captureError";
 
-export class RideConfirmController {
+export class TravelConfirmController {
   constructor(private readonly _rideUseCases: IRideUseCases) {}
   async saveRide(ride: IRide): Promise<IHttpResponse<any>> {
     try {

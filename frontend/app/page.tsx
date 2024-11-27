@@ -2,7 +2,7 @@ import FormUser from "./_components/FormUser";
 
 export default function Home() {
   return (
-    <div className="fixed top-0 flex w-screen h-screen items-center justify-center text-white">
+    <div className=" flex w-screen h-screen bg-gradient-to-b from-blue-600 to-purple-600 items-center justify-center text-white">
       <FormUser />
     </div>
   );

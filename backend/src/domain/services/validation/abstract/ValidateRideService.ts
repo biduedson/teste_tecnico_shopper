@@ -8,4 +8,5 @@ export interface IValidateRideService {
   validateDrive(driveDto: DriverDTO): Promise<void>;
   validateDriverFound(driver: boolean): void;
   validateDriverMinKm(minKm: number, distance: number): void;
+  validateDriverName(requestDriverName: string, driverNameFound: string): void;
 }

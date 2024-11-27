@@ -1,17 +1,17 @@
 import { IHttpResponse } from "../../../application/interfaces/HttpResponse";
-import { IRouteResponse } from "../../../application/interfaces/RideEstimateResponse";
-import { User } from "../../../application/interfaces/User";
-import { ICalculateRideUseCases } from "../../../application/useCases/contracts/CalculateRideUseCases";
+import { ITravelEstimateResponse } from "../../../application/interfaces/TravelEstimateResponse";
+import { ITravelRequestBody } from "../../../application/interfaces/TravelRequestBody";
+import { IRideEstimateUseCases } from "../../../application/useCases/contracts/RideEstimateUseCases";
 import { capTuretypeError } from "../../../shared/utils/captureError";
 
-export class EstimateRideRouteController {
-  constructor(
-    private readonly _calculateRideUseCases: ICalculateRideUseCases
-  ) {}
-  async postRideEstimate(user: User): Promise<IHttpResponse<IRouteResponse>> {
+export class RideEstimateRouteController {
+  constructor(private readonly _calculateRideUseCases: IRideEstimateUseCases) {}
+  async postRideEstimate(
+    body: ITravelRequestBody
+  ): Promise<IHttpResponse<ITravelEstimateResponse>> {
     try {
       const routeResponse = await this._calculateRideUseCases.postRideEstimate(
-        user
+        body
       );
 
       return {

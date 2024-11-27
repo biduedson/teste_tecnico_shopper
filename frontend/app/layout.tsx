@@ -29,7 +29,7 @@ export default function RootLayout({
     <>
       <html lang="en">
         <body
-          className={`${oswald.variable} ${roboto.variable} w-screen max-w-[1920px] min-h-full  bg-slate-950 `}
+          className={`${oswald.variable} ${roboto.variable}  w-screen max-w-[1920px] min-h-full  bg-slate-950 `}
         >
           <NavBar />
           {children}

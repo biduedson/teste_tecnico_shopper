@@ -27,7 +27,12 @@ export class RideUseCasesImpl implements IRideUseCases {
     await this._validateRideService.validateDrive(driverDTO);
 
     const driverFound = await this._rideRepository.getDriver(ride.driver.id);
+
     this._validateRideService.validateDriverFound(driverFound !== undefined);
+    this._validateRideService.validateDriverName(
+      driverDTO.name,
+      driverFound?.name!
+    );
 
     this._validateRideService.validateDriverMinKm(
       driverFound!.minKm!,

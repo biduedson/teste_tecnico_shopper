@@ -7,7 +7,7 @@ const NavBar = () => {
   const router = useRouter();
 
   return (
-    <nav className="flex    items-center justify-around p-6 bg-slate-800 w-screen ">
+    <nav className="fixed top-0 flex z-50   items-center justify-around p-6 bg-slate-800 w-screen ">
       <div
         className="text-lg font-bold cursor-pointer"
         onClick={() => router.push("/")}

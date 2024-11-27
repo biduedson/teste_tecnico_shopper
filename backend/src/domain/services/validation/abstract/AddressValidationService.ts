@@ -1,4 +1,4 @@
-import { UserDTO } from "../../../../application/dtos/UserDto";
+import { UserDTO } from "../../../../application/dtos/TravelRequestBodyDTO";
 
 export interface IAddressValidationService {
   normalizaAdrres(address: string): void;

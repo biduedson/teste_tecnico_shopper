@@ -57,7 +57,7 @@ const CardDriver = ({ driver, dataTravel, userId }: ICardDriverProps) => {
     <>
       <div className="  bg-slate-100 rounded-lg text-purple-600">
         <div className="flex flex-col gap-2 p-2 ">
-          <div className="flex items-center justify-between px-2 shadow-sm shadow-gray-600 p-2 rounded-sm ">
+          <div className="flex items-center justify-between px-2  shadow-sm shadow-slate-600 p-2 rounded-sm ">
             <div className="flex flex-col ">
               <p className="text-slate-950">Nome do motorista</p>
               <p className="font-semibold text-[12px] ">{driver.name}</p>
@@ -67,7 +67,7 @@ const CardDriver = ({ driver, dataTravel, userId }: ICardDriverProps) => {
               <p className="font-semibold text-[12px] ">{driver.vehicle}</p>
             </div>
           </div>
-          <div className="flex flex-col gap-1  ">
+          <div className="flex flex-col gap-1  shadow-sm shadow-slate-600">
             <div className="rounded-sm shadow-sm shadow-gray-600 p-2">
               <p className="text-slate-950">Descrição</p>
               <p className="font-semibold text-[12px] ">{driver.description}</p>
@@ -75,16 +75,16 @@ const CardDriver = ({ driver, dataTravel, userId }: ICardDriverProps) => {
           </div>
 
           <div className="flex flex-col lg:flex-row gap-2 my-2 justify-between ">
-            <div className="flex flex-col gap-2 rounded-sm shadow-sm shadow-gray-600 p-2 ">
+            <div className="flex flex-col gap-2 rounded-sm  shadow-sm shadow-slate-600 p-2 ">
               <div className="flex gap-2 items-center">
                 <p className="text-slate-950">Avaliação</p>
-                <RatingStar rating={driver.review.rating} />
+                <RatingStar rating={driver.reviews.rating} />
               </div>
-              <p className="text-purple-600">{driver.review.comment}</p>
+              <p className="text-purple-600">{driver.reviews.comment}</p>
             </div>
           </div>
           <div className="flex  items-center justify-between px-2">
-            <div>
+            <div className=" rounded-lg  shadow-lg shadow-slate-600 p-2">
               <p className="text-slate-950">Valor da viagem</p>
               <p className="font-semibold text-[12px] ">
                 {formatCurrency(driver.value)}
@@ -92,7 +92,7 @@ const CardDriver = ({ driver, dataTravel, userId }: ICardDriverProps) => {
             </div>
 
             <Button
-              className="my-2 w-[80px]  bg-purple-600 hover:bg-purple-950"
+              className="my-2 w-[80px]  bg-purple-600 hover:bg-purple-950  shadow-lg shadow-slate-600"
               onClick={() => setAlerOpen(true)}
             >
               Escolher

@@ -8,6 +8,7 @@ import { IDriver } from "../_interfaces/Driver";
 import { ICoordinates } from "../_interfaces/Coordinates";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { Button } from "./ui/button";
+import AlertError from "./AlertError";
 
 const FormUser = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -17,6 +18,8 @@ const FormUser = () => {
   const [coordinates, setCoordinates] = useState<ICoordinates[] | []>([]);
   const [isLoading, setIsloading] = useState<boolean>(false);
   const [idUser, setIdUser] = useState<string>("");
+  const [isOpenAlert, setIsOpenAlert] = useState<boolean>(false);
+  const [messageAlert, setMessageAlert] = useState<string>("");
 
   const validationSchema = Yup.object().shape({
     customer_id: Yup.string().required("O ID do usuario é obrigatório"),
@@ -33,7 +36,10 @@ const FormUser = () => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleSubmit = async (values: any, { resetForm }: any) => {
     if (values.origin === values.destination) {
-      return alert("Origem e destino não podem ser iguais");
+      setMessageAlert("Origem e destino não podem ser iguais");
+      setIsOpenAlert(true);
+
+      return;
     }
     setIsloading(true);
     try {
@@ -46,7 +52,6 @@ const FormUser = () => {
       });
       const data = await response.json();
       if (response.ok) {
-        alert("Dados enviados com sucesso!");
         resetForm();
         setIdUser(values.customer_id);
         setDataTravel(data);
@@ -68,21 +73,21 @@ const FormUser = () => {
             lng: originLongitude,
           },
         ]);
+        setIsOpen(true);
       } else {
-        alert(data.Resposta.error_description);
-        console.log(data);
+        setMessageAlert(data.Resposta.error_description);
+        setIsOpenAlert(true);
       }
     } catch (error) {
       console.error("Erro ao enviar:", error);
     } finally {
-      setIsOpen(true);
       setIsloading(false);
     }
   };
 
   return (
     <>
-      <div className="max-w-xl h-auto mx-auto mt-10 p-10  bg-gray-800/80 shadow-md shadow-slate-600 rounded-sm">
+      <div className="max-w-xl h-auto mx-auto p-10  bg-gray-800/80 shadow-md shadow-slate-600 rounded-sm">
         <h1 className="text-2xl font-bold mb-4 text-purple-600">
           Escolha seu Próximo Destino
         </h1>
@@ -91,7 +96,7 @@ const FormUser = () => {
           validationSchema={validationSchema}
           onSubmit={handleSubmit}
         >
-          <Form className="space-y-1 ">
+          <Form className="space-y-3">
             <div>
               <label
                 htmlFor="customer_id"
@@ -152,7 +157,7 @@ const FormUser = () => {
             <Button
               type="submit"
               disabled={isLoading}
-              className="bg-purple-600 w-[90px] text-white px-4 py-2 rounded hover:bg-purple-700 "
+              className="bg-purple-600 w-full text-white px-4 mt-2 shadow-sm shadow-slate-950 rounded hover:bg-purple-700 "
             >
               {isLoading ? (
                 <span className="flex gap-1 text-sm">
@@ -166,6 +171,13 @@ const FormUser = () => {
           </Form>
         </Formik>
       </div>
+      <AlertError
+        isOpen={isOpenAlert}
+        setIsOpen={setIsOpenAlert}
+        message={messageAlert}
+        title="Erro ao Solicitar viagem."
+      />
+
       {coordinates.length && (
         <TravelOptions
           isOpen={isOpen}

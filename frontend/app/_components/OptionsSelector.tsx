@@ -24,7 +24,10 @@ const OptionsSelector = ({
     setSelectedDriver(value);
     handlechange(value);
   };
-
+  const uniqueDrivers = historyTravel.filter(
+    (driver, index, self) =>
+      index === self.findIndex((d) => d.driverName === driver.driverName)
+  );
   return (
     <Select onValueChange={handleSelectChange} value={selectedDriver}>
       <SelectTrigger className="w-full bg-slate-100 h-[40px] border-[2px]  border-purple-600">
@@ -42,7 +45,7 @@ const OptionsSelector = ({
           <SelectLabel className="text-purple-600 font-bold text-xl">
             Motoristas:
           </SelectLabel>
-          {historyTravel.map((driver) => (
+          {uniqueDrivers.map((driver) => (
             <SelectItem key={driver.driverName} value={String(driver.driverId)}>
               {driver.driverName}
             </SelectItem>

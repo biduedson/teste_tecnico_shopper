@@ -1,5 +1,5 @@
 import { IRide } from "../../interfaces/Ride";
 
-export interface IRideUserListUseCases {
+export interface IUserTravelListUseCases {
   getRideUserList(customer_id: string, driverId: number): Promise<IRide[] | []>;
 }

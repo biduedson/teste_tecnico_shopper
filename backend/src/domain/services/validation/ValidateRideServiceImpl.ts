@@ -32,12 +32,23 @@ export class ValidateRideServiceImpl implements IValidateRideService {
       );
     }
   }
+
+  validateDriverName(requestDriverName: string, driverNameFound: string): void {
+    if (requestDriverName !== driverNameFound) {
+      throw new InvalidDataError(
+        "Os dados fornecidos no corpo da requisição são inválidos",
+        "INVALID_DATA",
+        "O nome do motorista  não correspondo ai id informado ."
+      );
+    }
+  }
+
   validateDriverFound(driver: boolean): void {
     if (!driver) {
       throw new NotFoundError(
         "Motorista não encontrado",
         "DRIVER_NOT_FOUND",
-        "Motorista não esta cadastrado."
+        "Motorista não encontrado."
       );
     }
   }

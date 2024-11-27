@@ -10,6 +10,8 @@ import { formatCurrency } from "../_helpers/price";
 import { formatKm } from "../_helpers/formatKm";
 import { formatTimetotal } from "../_helpers/formatTimetotal";
 import OptionsSelector from "../_components/OptionsSelector";
+import AlertError from "../_components/AlertError";
+
 const Page = () => {
   const [travelHistory, setTravelHistory] = useState<ITravelHistory[] | []>([]);
   const [userId, setUserId] = useState<string>("");
@@ -17,6 +19,8 @@ const Page = () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [openAlert, setOpenAlert] = useState(false);
   const [selectedDriver, setSelectedDriver] = useState<string>("");
+  const [alerError, setAlerError] = useState<boolean>(false);
+  const [alerMessage, setAlerMessage] = useState<string>("");
 
   const handleUserInputChange = (
     event: React.ChangeEvent<HTMLInputElement>
@@ -58,15 +62,18 @@ const Page = () => {
         setOpenAlert(true);
         setTravelHistory(history);
       } else {
-        alert(data.Resposta.error_description);
+        setAlerMessage(data.Resposta.error_description);
+        setAlerError(true);
         setTravelHistory([]);
       }
     } catch (error) {
+      setAlerMessage("Erro interno do servidor");
+      setAlerError(true);
       console.error("Erro", error);
     }
   };
   return (
-    <div className=" max-w-5xl mx-auto flex flex-col items-center h-full overflow-y-auto scrollbar-hide">
+    <div className=" max-w-5xl mx-auto flex flex-col items-center  h-full overflow-y-auto scrollbar-hide mt-28">
       <h1 className="uppercase text-purple-600 text-xl font-bold my-4">
         Histórico de viagens
       </h1>
@@ -91,7 +98,7 @@ const Page = () => {
       </div>
       <div className="w-full max-w-5xl mx-auto my-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 ">
         <div
-          className={` bg-purple-600 p-4 rounded-lg  flex flex-col items-center text-white shadow-lg shadow-slate-600`}
+          className={` bg-purple-600 p-4 rounded-lg  flex flex-col items-center text-white shadow-sm shadow-slate-600`}
         >
           <p> Total de Viagens encontradas</p>
           <span className="font-bold text-xl text-center">
@@ -99,7 +106,7 @@ const Page = () => {
           </span>
         </div>
         <div
-          className={` bg-purple-600 p-4 rounded-lg  flex flex-col items-center text-white shadow-lg shadow-slate-600`}
+          className={` bg-purple-600 p-4 rounded-lg  flex flex-col items-center text-white shadow-sm shadow-slate-600`}
         >
           <p> Total gasto com viagens</p>
           <span className="font-bold text-xl text-center">
@@ -111,7 +118,7 @@ const Page = () => {
           </span>
         </div>
         <div
-          className={` bg-purple-600 p-4 rounded-lg  flex flex-col items-center text-white shadow-lg shadow-slate-600`}
+          className={` bg-purple-600 p-4 rounded-lg  flex flex-col items-center text-white shadow-sm shadow-slate-600`}
         >
           <p>Total de kilometros viajados</p>
           <span className="font-bold text-xl text-center ">
@@ -123,7 +130,7 @@ const Page = () => {
           </span>
         </div>
         <div
-          className={` bg-purple-600 p-4 rounded-lg  flex flex-col items-center text-white shadow-lg shadow-slate-600`}
+          className={` bg-purple-600 p-4 rounded-lg  flex flex-col items-center text-white shadow-sm shadow-slate-600`}
         >
           <p>Total de horas viajados</p>
           <span className="font-bold text-xl text-center">
@@ -135,7 +142,14 @@ const Page = () => {
           </span>
         </div>
       </div>
+
       <TableTravelHistory travelHistory={travelHistory} />
+      <AlertError
+        isOpen={alerError}
+        setIsOpen={setAlerError}
+        message={alerMessage}
+        title="Erro ao buscar histórico de viagens."
+      />
     </div>
   );
 };

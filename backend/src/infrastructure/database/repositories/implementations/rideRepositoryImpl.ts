@@ -1,6 +1,8 @@
-import { Driver } from "../../../../application/interfaces/Driver";
+import { IDriver } from "../../../../application/interfaces/Driver";
 import { IRide } from "../../../../application/interfaces/Ride";
-import { drivers } from "../../mockDrivers";
+import { Driver } from "../../../../domain/entities/Driver";
+import { DriverModel } from "../../models/DriverModel";
+import { ReviewDriverModel } from "../../models/ReviewDriverModel";
 import { RideConfirmModel } from "../../models/rideConfirmModel";
 
 import { IRideRepository } from "../contracts/RideRepository";
@@ -18,8 +20,21 @@ export class RideRepositoryImpl implements IRideRepository {
     });
   }
 
-  async getDriver(id: number): Promise<Driver | undefined> {
-    const driver = drivers.find((driver) => driver.id === id);
-    return driver;
+  async getDriver(id: number): Promise<IDriver | undefined> {
+    const driverFind = await DriverModel.findOne({
+      where: { id: id },
+    });
+    if (!driverFind) {
+      return undefined;
+    }
+    console.log(driverFind);
+    const review = await ReviewDriverModel.findOne({
+      where: { id: driverFind?.id },
+    });
+
+    return {
+      ...driverFind?.dataValues?.dataValues,
+      reviews: review?.dataValues?.dataValues?.reviews,
+    };
   }
 }

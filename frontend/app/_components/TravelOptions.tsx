@@ -54,7 +54,7 @@ const TravelOptions = ({
               )}
             </AlertDialogTitle>
             <AlertDialogDescription>
-              <div className=" flex flex-col h-[380px] lg:h-[280px] my-4 gap-4 overflow-y-scroll [&::-webkit-scrollbar]:hidden">
+              <div className=" flex flex-col h-[380px]  my-4 gap-4 overflow-y-scroll [&::-webkit-scrollbar]:hidden">
                 {dataDriver.map((driver) => {
                   return (
                     <CardDriver
@@ -70,7 +70,7 @@ const TravelOptions = ({
           </AlertDialogHeader>
           <AlertDialogFooter>
             <Button
-              className="bg-purple-600 hover:bg-purple-950 w-full"
+              className="bg-purple-600 hover:bg-purple-950 w-full  shadow-lg shadow-slate-900"
               onClick={() => setIsOpen(false)}
             >
               Cancelar
