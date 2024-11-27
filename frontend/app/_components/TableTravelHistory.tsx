@@ -19,7 +19,7 @@ interface TableTravelHistoryProps {
 const TableTravelHistory = ({ travelHistory }: TableTravelHistoryProps) => {
   return (
     <>
-      <Table className="w-full max-w-5xl mx-auto bg-gray-900 text-white shadow-lg shadow-slate-600 ">
+      <Table className="hidden lg:block w-full max-w-5xl mx-auto bg-gray-900 text-white shadow-lg shadow-slate-600 ">
         <TableHeader className="bg-gray-800 ">
           <TableRow>
             <TableHead className="p-4 text-left">

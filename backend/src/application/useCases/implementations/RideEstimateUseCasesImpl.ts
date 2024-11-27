@@ -5,7 +5,7 @@ import { TravelRequestBodyDto } from "../../dtos/TravelRequestBodyDTO";
 import { ITravelEstimateResponse } from "../../interfaces/TravelEstimateResponse";
 import { IRideEstimateUseCases } from "../contracts/RideEstimateUseCases";
 import { IAddressValidationService } from "../../../domain/services/validation/abstract/AddressValidationService";
-import { ITravelRequestBody } from "../../interfaces/TravelRequestBody";
+import { ITravelRequest } from "../../interfaces/TravelRequest";
 
 export class RideEstimateUseCasesImpl implements IRideEstimateUseCases {
   constructor(
@@ -14,7 +14,7 @@ export class RideEstimateUseCasesImpl implements IRideEstimateUseCases {
   ) {}
 
   async postRideEstimate(
-    body: ITravelRequestBody
+    body: ITravelRequest
   ): Promise<ITravelEstimateResponse> {
     this.addresValidationService.validateAddress(body.destination, body.origin);
 
@@ -36,7 +36,6 @@ export class RideEstimateUseCasesImpl implements IRideEstimateUseCases {
       );
     }
     const drivers = await this._repository.getAllDrivers();
-
     if (!drivers?.length) {
       throw new InvalidDataError(
         "Os dados fornecidos no corpo da requisição são inválidos",
@@ -44,12 +43,10 @@ export class RideEstimateUseCasesImpl implements IRideEstimateUseCases {
         "motoristas não encontrados"
       );
     }
-    //ok.console.log(drivers);
     const rideEstimateResponse = rideEstimateService(
       goggleRouteResponse,
       drivers
     );
-
     return rideEstimateResponse;
   }
 }

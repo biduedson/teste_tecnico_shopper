@@ -18,7 +18,7 @@ export class TravelModel extends Model {
   @Column({ type: DataType.INTEGER, allowNull: false })
   customer_id!: number; // Referência ao ID do usuário (foreign key)
 
-  @Column({ type: DataType.DATE })
+  @Column({ type: DataType.DATE, defaultValue: DataType.NOW })
   date!: Date;
 
   @Column({ type: DataType.STRING })

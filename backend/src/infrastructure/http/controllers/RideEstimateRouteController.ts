@@ -1,13 +1,13 @@
 import { IHttpResponse } from "../../../application/interfaces/HttpResponse";
 import { ITravelEstimateResponse } from "../../../application/interfaces/TravelEstimateResponse";
-import { ITravelRequestBody } from "../../../application/interfaces/TravelRequestBody";
+import { ITravelRequest } from "../../../application/interfaces/TravelRequest";
 import { IRideEstimateUseCases } from "../../../application/useCases/contracts/RideEstimateUseCases";
 import { capTuretypeError } from "../../../shared/utils/captureError";
 
 export class RideEstimateRouteController {
   constructor(private readonly _calculateRideUseCases: IRideEstimateUseCases) {}
   async postRideEstimate(
-    body: ITravelRequestBody
+    body: ITravelRequest
   ): Promise<IHttpResponse<ITravelEstimateResponse>> {
     try {
       const routeResponse = await this._calculateRideUseCases.postRideEstimate(

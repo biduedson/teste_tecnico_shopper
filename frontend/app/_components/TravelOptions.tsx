@@ -41,9 +41,9 @@ const TravelOptions = ({
       <AlertDialog open={isOpen}>
         <AlertDialogContent className="rounded-xl bg-gray-800 h-[80vh] lg:h-[90%] px-4">
           <AlertDialogHeader>
-            <AlertDialogTitle className="w-full h-[250px] lg:h-[180px] shadow-lg   shadow-slate-500 rounded-lg ">
+            <AlertDialogTitle className="w-full min-h-[180px]  shadow-lg   shadow-slate-500 rounded-lg ">
               {pathPoints.length && (
-                <div className="relative w-full  h-full ">
+                <div className="relative w-full  min-h-[180px] ">
                   <Image
                     src={imgUrl}
                     alt="map"

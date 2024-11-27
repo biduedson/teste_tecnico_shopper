@@ -1,6 +1,6 @@
 import { ITravelEstimateResponse } from "../../interfaces/TravelEstimateResponse";
-import { User } from "../../interfaces/User";
+import { ITravelRequest } from "../../interfaces/TravelRequest";
 
 export interface IRideEstimateUseCases {
-  postRideEstimate(user: User): Promise<ITravelEstimateResponse>;
+  postRideEstimate(body: ITravelRequest): Promise<ITravelEstimateResponse>;
 }

@@ -9,8 +9,8 @@ export class TravelRequestBodyDto {
   @IsNotEmpty({ message: "origin  é obrigatório" })
   origin: string;
 
-  @IsString({ message: "destination deve ser uma string." })
-  @IsNotEmpty({ message: "destination  é obrigatório" })
+  @IsString({ message: "destino deve ser uma string." })
+  @IsNotEmpty({ message: "destino  é obrigatório" })
   destination: string;
 
   constructor(customer_id: string, origin: string, destination: string) {

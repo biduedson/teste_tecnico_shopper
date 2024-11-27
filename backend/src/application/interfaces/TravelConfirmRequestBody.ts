@@ -1,4 +1,4 @@
-export interface ICreateRideRequest {
+export interface ITravelConfirmRequestBody {
   customer_id: string;
   origin: string;
   destination: string;

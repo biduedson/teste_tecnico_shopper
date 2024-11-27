@@ -20,36 +20,31 @@ const sequelize = new Sequelize({
   ],
 });
 
-// Definição das associações
-
-// Associação entre Usuário e Viagem
 UserModel.hasMany(TravelModel, {
-  foreignKey: "customer_id", // FK em TravelModel
-  as: "userTravels", // Alias único
+  foreignKey: "customer_id",
 });
+
 TravelModel.belongsTo(UserModel, {
   foreignKey: "customer_id",
-  as: "travelCustomer", // Alias único para esta associação
+  as: "travelCustomer",
 });
 
-// Associação entre Motorista e Viagem
 DriverModel.hasMany(TravelModel, {
-  foreignKey: "driver_id", // FK em TravelModel
-  as: "driverTravels", // Alias único
+  foreignKey: "driver_id",
+  as: "driverTravels",
 });
 TravelModel.belongsTo(DriverModel, {
   foreignKey: "driver_id",
-  as: "travelDriver", // Alias único
+  as: "travelDriver",
 });
 
-// Associação entre Motorista e Review
 DriverModel.hasMany(ReviewDriverModel, {
-  foreignKey: "driver_id", // FK em ReviewDriverModel
-  as: "driverReviews", // Alias único
+  foreignKey: "driver_id",
+  as: "driverReviews",
 });
 ReviewDriverModel.belongsTo(DriverModel, {
   foreignKey: "driver_id",
-  as: "reviewedDriver", // Alias único
+  as: "reviewedDriver",
 });
 
 export default sequelize;

@@ -2,8 +2,6 @@ import { IRideRepository } from "../../../infrastructure/database/repositories/c
 import { IRide } from "../../interfaces/Ride";
 import { IRideUseCases } from "../contracts/RideUseCases";
 import { DriverDTO, RideDTO } from "../../dtos/RideConfirmDTO";
-import { InvalidMileageError } from "../../../domain/exeptions/invalidMileageError";
-import { NotFoundError } from "../../../domain/exeptions/notFoundError";
 import { IValidateRideService } from "../../../domain/services/validation/abstract/ValidateRideService";
 
 export class RideUseCasesImpl implements IRideUseCases {
@@ -25,13 +23,17 @@ export class RideUseCasesImpl implements IRideUseCases {
     );
     await this._validateRideService.validateRide(rideDto);
     await this._validateRideService.validateDrive(driverDTO);
-
     const driverFound = await this._rideRepository.getDriver(ride.driver.id);
+    console.log(ride.driver.id);
 
-    this._validateRideService.validateDriverFound(driverFound !== undefined);
+    const driverExisting = await this._rideRepository.getDriverFound(
+      ride.driver.id
+    );
+
+    this._validateRideService.validateDriverFound(driverExisting !== null);
     this._validateRideService.validateDriverName(
-      driverDTO.name,
-      driverFound?.name!
+      driverExisting?.name!,
+      ride.driver.name
     );
 
     this._validateRideService.validateDriverMinKm(

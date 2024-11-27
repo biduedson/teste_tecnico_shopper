@@ -11,6 +11,9 @@ import { formatKm } from "../_helpers/formatKm";
 import { formatTimetotal } from "../_helpers/formatTimetotal";
 import OptionsSelector from "../_components/OptionsSelector";
 import AlertError from "../_components/AlertError";
+import { motion } from "framer-motion";
+import { fadeIn } from "../_lib/variants";
+import TravelCard from "../_components/TravelCard";
 
 const Page = () => {
   const [travelHistory, setTravelHistory] = useState<ITravelHistory[] | []>([]);
@@ -73,15 +76,21 @@ const Page = () => {
     }
   };
   return (
-    <div className=" max-w-5xl mx-auto flex flex-col items-center  h-full overflow-y-auto scrollbar-hide mt-28">
+    <motion.section
+      variants={fadeIn("down", 0.4)}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: false, amount: 0.2 }}
+      className=" px-4 lg:px-0 max-w-5xl mx-auto flex flex-col items-center  h-full overflow-y-auto scrollbar-hide mt-28"
+    >
       <h1 className="uppercase text-purple-600 text-xl font-bold my-4">
         Histórico de viagens
       </h1>
 
-      <div className=" w-full flex items-center justify-center gap-2  my-4">
+      <div className=" w-full flex flex-col sm:flex-row items-center justify-center gap-2  my-4">
         <SearchUser
           handleInputChange={handleUserInputChange}
-          placeHolder="Informe o id do usuario"
+          placeHolder="id do usuario"
         />
 
         <OptionsSelector
@@ -89,14 +98,14 @@ const Page = () => {
           handlechange={handleDriverChange}
         />
         <Button
-          className="  bg-purple-600 h-[40px] flex gap-1"
+          className="  bg-purple-600 w-full sm:w-fit h-[40px] flex gap-1"
           onClick={() => showHistoriTravelFetch(userId, Number(selectedDriver))}
         >
           <IoSearch />
           Buscar
         </Button>
       </div>
-      <div className="w-full max-w-5xl mx-auto my-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 ">
+      <div className="  w-full max-w-5xl mx-auto my-4 grid grid-cols-2 lg:grid-cols-4 gap-4 ">
         <div
           className={` bg-purple-600 p-4 rounded-lg  flex flex-col items-center text-white shadow-sm shadow-slate-600`}
         >
@@ -144,13 +153,18 @@ const Page = () => {
       </div>
 
       <TableTravelHistory travelHistory={travelHistory} />
+
       <AlertError
         isOpen={alerError}
         setIsOpen={setAlerError}
         message={alerMessage}
         title="Erro ao buscar histórico de viagens."
       />
-    </div>
+      <TravelCard
+        travelHistory={travelHistory}
+        setTravelHistory={setTravelHistory}
+      />
+    </motion.section>
   );
 };
 

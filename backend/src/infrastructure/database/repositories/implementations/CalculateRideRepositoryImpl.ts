@@ -1,16 +1,15 @@
 import axios from "axios";
-import { ITravelEstimateResponse } from "../../../../application/interfaces/TravelEstimateResponse";
 import { ICalculateRideUseRepository } from "../contracts/CalculateRideRepository";
 import { GOOGLE_API_KEY } from "../../../../app";
 import { IDriver } from "../../../../application/interfaces/Driver";
 import { DriverModel } from "../../models/DriverModel";
 import { ReviewDriverModel } from "../../models/ReviewDriverModel";
-import { ITravelRequestBody } from "../../../../application/interfaces/TravelRequestBody";
+import { ITravelRequest } from "../../../../application/interfaces/TravelRequest";
 
 export class CalculateRideRepositoryImpl
   implements ICalculateRideUseRepository
 {
-  async postRideEstimate(body: ITravelRequestBody): Promise<any> {
+  async postRideEstimate(body: ITravelRequest): Promise<any> {
     const { origin, destination } = body;
 
     const response = await axios.get(
@@ -44,7 +43,6 @@ export class CalculateRideRepositoryImpl
         };
       })
     );
-    // OK. console.log(drivers);
     return drivers;
   }
 }

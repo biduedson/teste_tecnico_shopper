@@ -1,6 +1,6 @@
 export class TravelEntity {
   id: number;
-  customer_id: number; // Referência ao ID do usuário
+  customer_id: number;
   date: Date;
   origin: string;
   destination: string;

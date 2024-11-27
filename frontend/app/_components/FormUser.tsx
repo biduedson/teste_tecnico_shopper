@@ -177,7 +177,6 @@ const FormUser = () => {
         message={messageAlert}
         title="Erro ao Solicitar viagem."
       />
-
       {coordinates.length && (
         <TravelOptions
           isOpen={isOpen}

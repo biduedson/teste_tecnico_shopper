@@ -34,6 +34,7 @@ export class ValidateRideServiceImpl implements IValidateRideService {
   }
 
   validateDriverName(requestDriverName: string, driverNameFound: string): void {
+    console.log(requestDriverName, driverNameFound);
     if (requestDriverName !== driverNameFound) {
       throw new InvalidDataError(
         "Os dados fornecidos no corpo da requisição são inválidos",

@@ -10,7 +10,7 @@ export const loadDrivers = async () => {
         where: { name: driver.name },
       });
 
-      // Se o motorista não existir, ai adiciono elee
+      // Se o motorista não existir, ai adiciono ele
       if (!existingDriver) {
         const newDriver = await DriverModel.create({
           name: driver.name,
@@ -22,8 +22,8 @@ export const loadDrivers = async () => {
         console.log(`Motorista ${driver.name} adicionado com sucesso!`);
         driver.reviews.map(async (review) => {
           await ReviewDriverModel.create({
-            rating: review.comment,
-            comment: review.rating,
+            rating: review.rating,
+            comment: review.comment,
             driver_id: newDriver.id,
           });
         });

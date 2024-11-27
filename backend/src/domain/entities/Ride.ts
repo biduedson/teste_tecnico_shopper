@@ -1,5 +1,4 @@
-import { IRideDriver } from "../../application/interfaces/RideDriver";
-
+import { IRide } from "../../application/interfaces/Ride";
 export class RideEntity {
   customer_id: string;
   origin: string;
@@ -15,7 +14,7 @@ export class RideEntity {
     destination: string,
     distance: number,
     duration: string,
-    driver: IRideDriver,
+    driver: IRide,
     value: number
   ) {
     this.customer_id = customer_id;
