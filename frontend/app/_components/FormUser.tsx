@@ -55,6 +55,7 @@ const FormUser = () => {
         resetForm();
         setIdUser(values.customer_id);
         setDataTravel(data);
+        console.log(data);
         setDrivers(data.Resposta.options);
         const {
           latitude: destinationLatitude,

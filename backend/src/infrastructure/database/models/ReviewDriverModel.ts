@@ -8,7 +8,7 @@ import {
 } from "sequelize-typescript";
 import { DriverModel } from "./DriverModel";
 
-@Table({ tableName: "reviews" })
+@Table({ tableName: "review" })
 export class ReviewDriverModel extends Model {
   @Column({ type: DataType.INTEGER, primaryKey: true, autoIncrement: true })
   id!: number;

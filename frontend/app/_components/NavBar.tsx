@@ -8,7 +8,6 @@ import { IoMenu } from "react-icons/io5";
 const NavBar = () => {
   const router = useRouter();
   const [openNav, setOpenNave] = useState(false);
-  console.log(openNav);
 
   return (
     <nav className="fixed top-0 flex z-40   items-center justify-around p-6 bg-slate-800 w-screen ">

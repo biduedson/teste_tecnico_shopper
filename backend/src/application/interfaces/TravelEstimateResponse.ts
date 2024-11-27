@@ -13,10 +13,10 @@ export interface ITravelEstimateResponse {
     name: string;
     description: string;
     vehicle: string;
-    reviews: {
+    review?: {
       rating: number;
       comment: string;
-    }[];
+    };
 
     value: number;
   }[];

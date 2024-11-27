@@ -20,7 +20,7 @@ export const rideEstimateService = (
       .map((driver) => {
         return {
           ...driver,
-          ...driver.reviews,
+
           value:
             driver.ratePerKm! *
             (goggleRouteResponse.routes[0].legs[0].distance.value / 1000),
@@ -29,6 +29,5 @@ export const rideEstimateService = (
       .sort((a, b) => a.value - b.value),
     routeResponse: goggleRouteResponse,
   };
-
   return data;
 };

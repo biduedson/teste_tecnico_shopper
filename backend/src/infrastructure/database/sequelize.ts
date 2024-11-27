@@ -40,7 +40,7 @@ TravelModel.belongsTo(DriverModel, {
 
 DriverModel.hasMany(ReviewDriverModel, {
   foreignKey: "driver_id",
-  as: "driverReviews",
+  as: "driverReview",
 });
 ReviewDriverModel.belongsTo(DriverModel, {
   foreignKey: "driver_id",

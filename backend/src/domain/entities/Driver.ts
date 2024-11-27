@@ -5,10 +5,10 @@ export class Driver implements IDriver {
   name: string;
   description: string;
   vehicle: string;
-  reviews: {
+  review: {
     rating: number;
     comment: string;
-  }[];
+  };
   ratePerKm: number;
   minKm: number;
 
@@ -17,10 +17,10 @@ export class Driver implements IDriver {
     name: string,
     description: string,
     vehicle: string,
-    reviews: {
+    review: {
       rating: number;
       comment: string;
-    }[],
+    },
     ratePerKm: number,
     minKm: number
   ) {
@@ -28,7 +28,7 @@ export class Driver implements IDriver {
     this.name = name;
     this.description = description;
     this.vehicle = vehicle;
-    this.reviews = reviews;
+    this.review = review;
     this.ratePerKm = ratePerKm;
     this.minKm = minKm;
   }

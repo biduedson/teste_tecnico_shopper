@@ -3,7 +3,7 @@ export interface IDriver {
   name: string;
   description: string;
   vehicle: string;
-  reviews: {
+  review: {
     rating: number;
     comment: string;
   };

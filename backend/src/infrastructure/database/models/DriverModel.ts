@@ -22,9 +22,12 @@ export class DriverModel extends Model {
   @Column({ type: DataType.INTEGER, allowNull: true })
   minKm?: number;
 
-  // Relacionamento com Reviews
-  @HasMany(() => ReviewDriverModel)
-  reviews!: ReviewDriverModel[];
+  // Agora, review é um objeto com rating e comment
+  @Column({ type: DataType.JSONB, allowNull: true })
+  review?: {
+    rating: number;
+    comment: string;
+  };
 
   // Relacionamento com Viagens (Motorista pode ter várias viagens)
   @HasMany(() => TravelModel, { foreignKey: "driver_id" })

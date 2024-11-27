@@ -78,9 +78,16 @@ const CardDriver = ({ driver, dataTravel, userId }: ICardDriverProps) => {
             <div className="flex flex-col gap-2 rounded-sm  shadow-sm shadow-slate-600 p-2 ">
               <div className="flex gap-2 items-center">
                 <p className="text-slate-950">Avaliação</p>
-                <RatingStar rating={driver.reviews.rating} />
+
+                {driver.review.comment ? (
+                  <RatingStar rating={driver.review?.rating} />
+                ) : (
+                  <p className="animate-pulse text-yellow-500">
+                    Carregando avaliação...
+                  </p>
+                )}
               </div>
-              <p className="text-purple-600">{driver.reviews.comment}</p>
+              <p className="text-purple-600">{driver.review.comment}</p>
             </div>
           </div>
           <div className="flex  items-center justify-between px-2">

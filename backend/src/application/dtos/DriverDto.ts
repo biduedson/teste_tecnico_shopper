@@ -32,7 +32,7 @@ export class DriverDTO {
   @ValidateNested({ each: true, message: "Cada avaliação deve ser válida." })
   @Type(() => ReviewDTO)
   @IsOptional()
-  reviews?: ReviewDTO[];
+  review?: ReviewDTO[];
 
   @IsNumber({}, { message: "A taxa por Km deve ser um número." })
   @IsPositive({ message: "A taxa por Km deve ser positiva." })
@@ -51,7 +51,7 @@ export class DriverDTO {
     ratePerKm: number,
     description: string,
     minKm?: number,
-    reviews?: ReviewDTO[]
+    review?: ReviewDTO[]
   ) {
     this.id = id;
     this.name = name;
@@ -59,6 +59,6 @@ export class DriverDTO {
     this.ratePerKm = ratePerKm;
     this.minKm = minKm!;
     this.description = description;
-    this.reviews = reviews;
+    this.review = review;
   }
 }
