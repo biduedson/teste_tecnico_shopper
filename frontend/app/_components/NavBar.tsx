@@ -23,7 +23,7 @@ const NavBar = () => {
         transition={{ type: "spring", stiffness: 300, damping: 30 }}
         className={
           openNav
-            ? "  bg-purple-600 fixed top-24 right-0 w-[70%] z-50  flex flex-col shadow-lg z-50 shadow-slate-950"
+            ? "  bg-purple-600 fixed top-24 right-0 w-[70%]   flex flex-col shadow-lg z-50 shadow-slate-950"
             : "hidden"
         }
       >
